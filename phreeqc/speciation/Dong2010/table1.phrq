@@ -1,0 +1,21 @@
+DATABASE ../../database/phreeqc-scb.dat 
+
+Title Table 1 in Dong et al. 2010 
+
+SOLUTION 1
+  pH    7.8
+  C(4)  2.00
+  Cl    0.31
+  S(6)  0.34
+  F     0.50
+  N(5)  0.13
+  P     0.005
+  Ca    0.90
+  Mg    0.46
+  Na    0.90 charge
+  K     0.06
+  Li    9.00e-4
+  Zn    2.00e-4
+  Cu    2.20e-5
+  Hg    4.00e-7
+END
