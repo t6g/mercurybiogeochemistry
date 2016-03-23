@@ -1,0 +1,51 @@
+DATABASE ../../database/phreeqc-scb.dat 
+
+Title Table 1 in Dong et al. 2010 
+
+SOLUTION 1
+  pH    7.8
+  C(4)  2.00
+  Cl    0.31
+  S(6)  0.34
+  F     0.50
+  N(5)  0.13
+  P     0.005
+  Ca    0.90
+  Mg    0.46
+  Na    0.90
+  K     0.06
+  Li    9.00e-4
+  Zn    2.00e-4
+  Cu    2.20e-5
+  #Hg    4.00e-7
+  L     4.00e-6   
+  Mmm   5.00e-9
+  Ni    9.50e-6
+  Cd    8.70e-7
+  Pb    5.20e-7
+  U(+6)  2.00e-5
+  Fe(+3) 2.70e-5 
+  SAVE SOLUTION 1
+END
+
+PRINT
+  #-reset false
+SELECTED_OUTPUT
+  -RESET false
+  -FILE ex4.txt
+USER_PUNCH
+  -start
+  -heading RXN HgL+ HgL2 Hg(OH)2 MmmL CaL+ MgL+ ZnL+ ZnL2 CuL+ CuL2 NiL+ NiL2 CdL+ CdL2 PbL+ PbL2 CoL+ CoL2 UO2L2 FeL+2 FeL2+ HL
+  10 PUNCH RXN
+  20 PUNCH mol('HgL+') mol('HgL2') mol('Hg(OH)2') mol('MmmL') mol('CaL+') mol('MgL+') mol('ZnL+')
+  30 PUNCH mol('ZnL2') mol('CuL+') mol('CuL2') mol('NiL+') mol('NiL2') mol('CdL+')
+  40 PUNCH mol('CdL2') mol('PbL+') mol('PbL2') mol('CoL+') mol('CoL2') mol('UO2L2')
+  50 PUNCH mol('FeL+2') mol('FeL2+') mol('HL')
+  -end
+END
+
+USE SOLUTION 1
+REACTION 1
+  Hg(NO3)2 1.0
+  4.0e-9 moles in 40 steps
+END
