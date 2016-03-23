@@ -1,7 +1,7 @@
 from pylab import *
 
 pf   = np.loadtxt('table1.txt', skiprows=1)
-phqc = np.loadtxt('../../../phreeqc/speciation/dong2010/ex1.txt', skiprows=2)
+phqc = np.loadtxt('../../../../phreeqc/speciation/dong2010/ex1.txt', skiprows=2)
 ph   = phqc[:, 0]
 
 semilogy(pf[:, 0], pf[:, 2], 'bo', pf[:, 0], pf[:, 3], 'r+', pf[:, 0], pf[:, 5], 'gx', pf[:, 0], pf[:, 6], 'ms', pf[:, 0], pf[:, 7], 'cd')

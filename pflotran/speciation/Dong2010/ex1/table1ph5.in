@@ -60,7 +60,7 @@ CHEMISTRY
   REDOX_SPECIES
     NO3-
   /
-  DATABASE ../../database/hanford.dat
+  DATABASE ../../../database/hanford.dat
   LOG_FORMULATION
   #ACTIVITY_COEFFICIENTS TIMESTEP
 
