@@ -1,0 +1,195 @@
+#Description: EFPC water chemistry Table 1 Dong 2010
+
+SIMULATION
+  SIMULATION_TYPE SUBSURFACE
+  PROCESS_MODELS
+    SUBSURFACE_TRANSPORT transport
+      GLOBAL_IMPLICIT
+    /
+  /
+END
+
+SUBSURFACE
+
+#=========================== chemistry ========================================
+CHEMISTRY
+  PRIMARY_SPECIES
+    H+
+    HCO3-
+    Cl-
+    SO4--
+    F-
+    NO3-
+    HPO4--
+    Ca++
+    Mg++
+    Na+
+    K+
+    Li+
+    Zn++
+    Cu++
+    Hg++
+    Rs-
+    Rcoo-
+  /
+  SECONDARY_SPECIES
+    OH-
+    CO3--
+    CO2(aq)
+    PO4---
+    Hg2OH+++
+    Hg3(OH)3+++
+    HgCl+
+    HgCl2
+    HgCl3-
+    HgCl4--
+    HgCO3
+    Hg(CO3)2--
+    HgF+
+    HgHCO3+
+    HgNO3+
+    Hg(NO3)2
+    HgOH+
+    Hg(OH)2
+    Hg(OH)3-
+    HgOHCl
+    HgOHCO3-
+    HgPO4-
+    HgHPO4
+    HgSO4
+    Hg(SO4)2--
+    HgRs+
+    HgRcoo+
+    RsH
+    RcooH
+  /
+  REDOX_SPECIES
+    NO3-
+  /
+  DATABASE ../../../database/hanford.dat
+  LOG_FORMULATION
+  #ACTIVITY_COEFFICIENTS TIMESTEP
+
+  OUTPUT
+    TOTAL
+    PH
+    PRIMARY_SPECIES
+    SECONDARY_SPECIES
+  /
+/
+
+#=========================== solver options ===================================
+TIMESTEPPER TRANSPORT
+  TS_ACCELERATION 8
+  MAX_STEPS -1
+/
+
+NEWTON_SOLVER TRANSPORT
+  #RTOL 1.d-4
+  #ATOL 1.d-4
+  #STOL 1.e-60
+  #DTOL 1.e4
+  #ITOL_UPDATE 1.d-4
+  NO_INFINITY_NORM
+  #NO_PRINT_CONVERGENCE
+  #PRINT_DETAILED_CONVERGENCE
+/
+
+LINEAR_SOLVER TRANSPORT
+  #KSP_TYPE GMRES
+  #PC_TYPE NONE
+  #KSP_TYPE PREONLY
+  #PC_TYPE LU
+  #SOLVER GMRES
+/
+
+#=========================== discretization ===================================
+GRID
+  TYPE structured
+  ORIGIN 0.d0 0.d0 0.d0
+  NXYZ 1 1 1
+  BOUNDS
+    0.d0 0.d0 0.d0
+    1.d0 1.d0 1.d0
+  /
+END
+
+#=========================== fluid properties =================================
+FLUID_PROPERTY
+  DIFFUSION_COEFFICIENT 1.d-9
+/
+
+#=========================== material properties ==============================
+MATERIAL_PROPERTY soil1
+  ID 1
+  POROSITY 0.25d0
+  TORTUOSITY 1.d0
+/
+
+#=========================== output options ===================================
+OUTPUT
+  PERIODIC TIME 1.d0 y
+  FORMAT TECPLOT BLOCK
+/
+
+#=========================== times ============================================
+TIME
+  FINAL_TIME 1.d0 y
+  INITIAL_TIMESTEP_SIZE 1.d-6 y
+  MAXIMUM_TIMESTEP_SIZE 1.d-1 y
+/
+
+#=========================== regions ==========================================
+REGION all
+  COORDINATES
+    0.d0 0.d0 0.d0
+    1.d0 1.d0 1.d0
+  /
+END
+
+#=========================== transport conditions =============================
+TRANSPORT_CONDITION initial
+  TYPE zero_gradient
+  CONSTRAINT_LIST
+    0.d0 initial
+  /
+END
+
+
+#=========================== constraints ======================================
+CONSTRAINT initial
+  CONCENTRATIONS
+    H+     5.0        P
+    HCO3-  2.0d-3     T
+    Cl-    3.1d-4     Z
+    SO4--  3.4d-4     T
+    F-     5.0d-4     T
+    NO3-   1.3d-4     T
+    HPO4-- 5.0d-6     T 
+    Ca++   9.0d-4     T
+    Mg++   4.6d-4     T
+    Na+    9.0d-4     T
+    K+     6.0d-5     T
+    Li+    9.0d-7     T 
+    Zn++   2.0d-7     T
+    Cu++   2.2d-8     T
+    Hg++   4.0d-10    T
+    Rs-    4.0d-9     T
+    Rcoo-  1.6d-6     T
+  /
+/
+
+#=========================== condition couplers ===============================
+# initial condition
+INITIAL_CONDITION
+  TRANSPORT_CONDITION initial
+  REGION all
+END
+
+#=========================== stratigraphy couplers ============================
+STRATA
+  REGION all
+  MATERIAL soil1
+END
+
+END_SUBSURFACE
