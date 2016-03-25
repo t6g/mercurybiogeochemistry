@@ -8,7 +8,7 @@ xp = pf[:, 0] * 1e9
 
 ax1 = subplot(2, 1, 1)
 plot(xx, np.divide(phqc[:, 1], incr)*100.0, 'b-', xx, np.divide(phqc[:, 2], incr)*100.0, 'r-', xx, np.divide(phqc[:, 3], incr)*100.0, 'g-')
-plot(xp, np.divide(pf[:, 2], pf[:, 0])*100.0, 'b+', xp, np.divide(pf[:, 3], pf[:, 0])*100.0, 'rx', xp, np.divide(pf[:, 1], pf[:, 0])*100.0, 'go')
+plot(xp, np.divide(pf[:, 2], pf[:, 0])*100.0, 'bo', xp, np.divide(pf[:, 3], pf[:, 0])*100.0, 'rs', xp, np.divide(pf[:, 1], pf[:, 0])*100.0, 'gd')
 ylim([0, 110])
 ylabel('%Hg$^{2+}$')
 lgd = plt.legend(('HgL$^+$', 'HgL$_2$', 'Hg(OH)$_2$'),loc=1)
@@ -18,13 +18,12 @@ setp(txt, fontsize='medium')
 ylim([0, 100])
 setp(ax1.get_xticklabels(), visible=False)
 
-
 cl = 4.0e-9
 ax2 = subplot(2, 1, 2)
-plot(xp, pf[:, 2]/cl*100.0, 'b+', xp, pf[:, 3]/cl*100.0, 'rx', xp, pf[:,4]/cl*100.0, 'ko')
+plot(xp, pf[:, 2]/cl*100.0, 'bo', xp, pf[:, 3]/cl*100.0, 'rs', xp, pf[:,4]/cl*100.0, 'ko')
 plot(xx, phqc[:, 1]/cl*100.0, 'b-', xx, phqc[:, 2]/cl*100.0, 'r-', xx, phqc[:, 7]/cl*100.0, 'k-', )
 ylim([0, 100])
-lgd = plt.legend(('HgL$^+$', 'HgL$_2$', 'HL', 'ZnL$^+$', 'CuL$^+$'),loc=1)
+lgd = plt.legend(('HgL$^+$', 'HgL$_2$', 'HL'),loc=1)
 lgd.draw_frame(False)
 txt = lgd.get_texts()
 setp(txt, fontsize='medium')

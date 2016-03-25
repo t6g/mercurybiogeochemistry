@@ -27,8 +27,8 @@ introduce substantial differences in the calculation results.
 \end{abstract}
 
 \section{Reactions}
-\subsection{Hg$^{2+}$ Aqueous Complexation Reactions with Inorganic Species}
-
+\subsection{Aqueous Complexation Reactions}
+\subsubsection{Hg$^{2+}$ with Inorganic Species}
 \begin{align}
 %+'HgOH+' 3 1.0 'Hg++' 1.0 'H2O' -1.0 'H+' 500.000 3.3970 500.00 500.000 500.000 500.000 500.000 500.000 4.0 1.0 217.5973 'scb'
 & \ce{Hg^2+ + H2O   <->  HgOH+ + H+} &&\mathrm{log\_k} = -3.397 \\
@@ -142,7 +142,7 @@ introduce substantial differences in the calculation results.
 & \ce{Hg^2+ + 2 SO_4^2- <-> Hg(SO4)_2^2-} && \mathrm{log\_k} = 3.48
 \end{align}
 
-\subsection{CH$_4$Hg$^{+}$ Aqueous Complexation Reactions with Inorganic Species}
+\subsubsection{CH$_4$Hg$^{+}$ with Inorganic Species}
 \begin{align}
 %+'MmmOH' 3 1.0 'Mmm+' 1.0 'H2O' -1.0 'H+' 500.0 4.557 500.0 500.0 500.0 500.0 500.0 500.0 4.0 0.0 232.6323
 & \ce{CH3Hg+ + H2O <-> CH3HgOH + H+} && \mathrm{log\_k} =  -4.557 \\
@@ -176,7 +176,7 @@ introduce substantial differences in the calculation results.
 & \ce{CH3Hg+ + S_2O3^2- <-> CH3HgS_2O_3^-} && \mathrm{log\_k} =  11.18
 \end{align}
 
-\subsection{Hg$^{2+}$ and CH$_4$Hg$^{+}$ Aqueous Complexation Reactions with Organic Species}
+\subsubsection{Hg$^{2+}$ and CH$_4$Hg$^{+}$ with Organic Species}
 
 \begin{align}
 %+'HDom---' 2 1.0 'H+' 1.0 'Dom----' 500.0 -10.0 500.0 500.0 500.0 500.0 500.0 500.0 4.0 -3.0 12.0111 'scb'
@@ -239,80 +239,93 @@ introduce substantial differences in the calculation results.
 & \ce{Fe^3+ + 2 L^- <-> FeL_2^+} && \mathrm{log\_k} = 16.40
 \end{align}
 
-\subsection{Other Metals}
+\subsubsection{Other Metals}
 %+'Cu(OH)2' 3 -2.0000 'H+' 1.0000 'Cu++' 2.0000 'H2O' 500.0000 13.68 500.0000 500.0000 500.0000 500.0000 500.0000 500.0000 4.0 1.0 97.5606 'scb' 
+\subsection{Surface Complexation Reactions}
+\subsection{Precipitation and Dissolution  Reactions}
 
 \section{Example Calculations}
 
-
-\emph{Example 1. Sulfate reduction with acetate as the electron donor}
-\\
-\begin{figure}[h]
+\subsection{Hg$^{2+}$ Speciation with Inorganic Ligands in EFPC Waters}
+Species and concentrations from Dong et al. (2010) are used in the calculations. 
+\begin{figure}[ht]
 \centering
-\includegraphics[width=0.5\textwidth]{../pflotran/speciation/Dong2010/ex1/comp.pdf}
-\caption{xxx}
-\label{Fig1}
+\includegraphics[width=0.6\textwidth]{../pflotran/speciation/Dong2010/ex1/comp.pdf}
+\caption{
+Hg$^{2+}$ speciation with inorganic ligands in EFPC waters. Total
+Hg$^{2+}$ = 0.4 nM. Other inorganic species and average concentrations from Dong
+et al. (2010) are used in the calculations. Curves = PHREEQC; Unfilled symbols
+= PFLOTRAN default (unit activity coefficient). PFLOTRAN and PHREEQC
+calculations are in general agreement.
+}
+\label{fig1}
 \end{figure}
 
-\emph{Example 2. Sulfate reduction with acetate as the electron donor and with nitrate inhibition}
-\\
-\begin{figure}[h]
+\newpage
+\subsection{Hg$^{2+}$ Speciation with Organic Ligands in EFPC Waters}
+\begin{figure}[ht]
 \centering
-\includegraphics[width=0.5\textwidth]{../pflotran/speciation/Dong2010/ex2/ex2.pdf}
-\caption{xxx}
-\label{Fig2}
+\includegraphics[width=0.6\textwidth]{../pflotran/speciation/Dong2010/ex2/ex2.pdf}
+\caption{
+Hg$^{2+}$ Speciation with organic ligands in EFPC waters. Based on
+inorganic species and concentrations in Fig. \ref{fig1}, 4 nM thiol sites (Rs$^-$) and
+16 $\mu$M carboxyl sites (Rcoo$^-$) are added. Curves = PHREEQC; Unfilled
+symbols = PFLOTRAN default (unit activity coefficient); Filled symbols = PFLOTRAN +
+Debye-Hückel activity coefficient updated in each Newton Iteration. 
+The results are quite different from Fig. 1 in Dong et al. (2010) probably
+because of different ways in fixing pH. In our calculations, HCl or NaOH is
+assumed to be added to a specified pH.
+}
+\label{fig2}
 \end{figure}
 
-\emph{Example 3. Sulfate reduction with acetate as the electron donor and with nitrate inhibition}
-\\
-\begin{figure}[h]
+\newpage
+\subsection{CH$_3$Hg Speciation in EFPC Waters}
+\begin{figure}[ht]
 \centering
-\includegraphics[width=0.5\textwidth]{../pflotran/speciation/Dong2010/ex2a/ex2.pdf}
-\caption{xxx}
-\label{Fig2a}
+\includegraphics[width=0.6\textwidth]{../pflotran/speciation/Dong2010/ex3/ex3.pdf}
+\caption{
+CH$_3$Hg speciation in EFPC waters. 5 pM CH$_3$Hg is added into the
+solutions as in Fig. \ref{fig2}. The results are in general agreement with Dong
+et al. (2010) Fig. 3a except that CH$_3$Hg concentrations are higher in the
+latter.}
+\label{fig3}
 \end{figure}
 
-\emph{Example 4. Sulfate reduction with acetate as the electron donor and with nitrate inhibition}
-\\
-\begin{figure}[h]
+\newpage
+\subsection{Competition with Other Metal Ions for Complexation with Thiol Ligands}
+\begin{figure}[ht]
 \centering
-\includegraphics[width=0.5\textwidth]{../pflotran/speciation/Dong2010/ex3/ex3.pdf}
-\caption{xxx}
-\label{Fig3}
+\includegraphics[width=0.6\textwidth]{../pflotran/speciation/Dong2010/ex4/ex40.pdf}
+\caption{
+Without competition with other metal ions for complexation with thiol
+ligands (L), PFLOTRAN calculations are close to PHREEQC.
+The calculations are based on the same input files for Fig. \ref{fig2} except
+that the 4 nM thiol sites (Rs$^-$) and 16 $\mu$M carboxyl sites (Rcoo$^-$) are
+replaced with 4 nM thiol sites represented by L (thiol group in Cysteine and
+Glutathione). For PHREEQC, CH$_3$Hg$^+$, Ni$^{2+}$, Cd$^{2+}$, Pb$^{2+}$,
+UO${_2}^{2+}$, and Fe$^{3+}$ are omitted from the solution to prevent the
+competition. For PFLOTRAN, the secondary species between these metals and L are
+not added in the input file to avoid the competition. 
+}
+\label{fig40}
 \end{figure}
 
-\emph{Example 5. Sulfate reduction with acetate as the electron donor and with nitrate inhibition}
-\\
-\begin{figure}[h]
+\newpage
+\begin{figure}[ht]
 \centering
-\includegraphics[width=0.5\textwidth]{../pflotran/speciation/Dong2010/ex3/ex3.pdf}
-\caption{xxx}
-\label{Fig3}
-\end{figure}
-
-\emph{Example 6. Sulfate reduction with acetate as the electron donor and with nitrate inhibition}
-\\
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{../pflotran/speciation/Dong2010/ex4/ex40.pdf}
-\caption{xxx}
-\label{Fig40}
-\end{figure}
-
-\\
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{../pflotran/speciation/Dong2010/ex4/ex4a.pdf}
-\caption{xxx}
-\label{Fig4a}
-\end{figure}
-
-\\
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{../pflotran/speciation/Dong2010/ex4/ex4.pdf}
-\caption{xxx}
-\label{Fig4}
+\includegraphics[width=0.6\textwidth]{../pflotran/speciation/Dong2010/ex4/ex4.pdf}
+\caption{
+With competition with other metal ions for complexation with thiol ligands (L):
+PFLOTRAN calculations (add metal thiol complexation reactions to Fig. \ref{fig40} case, empty markers)
+are different from PHREEQC (add metal species, curves). Adding secondary species Fe(OH)$_3$(aq),
+Fe(OH)$^{2+}$, Fe(OH)${_4}{^-}$, Fe(OH)$^{2+}$, FeF${_2}{^+}$, and Cu(OH)$_2$ into
+PFLOTRAN input files gets the PFLOTRAN calculations (filled markers) closer to
+PHREEQC. Namely, without complexation reactions of Fe$^{3+}$ and Cu$^{2+}$ with
+OH$^-$, more L$^-$ forms complex with Fe$^{3+}$ and Cu$^{2+}$, and less L$^-$
+is available to form complex with Hg$^{2+}$.
+}
+\label{fig4}
 \end{figure}
 
 

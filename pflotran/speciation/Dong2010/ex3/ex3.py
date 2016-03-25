@@ -20,6 +20,6 @@ plt.setp(txt, fontsize='medium')
 plt.subplots_adjust(left=0.12, right=0.95, top=0.95, bottom=0.12, wspace=0.05, hspace=0.05)
 
 fig = matplotlib.pyplot.gcf()
-fig.set_size_inches(8, 6)
+fig.set_size_inches(6, 4.5)
 savefig('ex3.pdf')
 #show()

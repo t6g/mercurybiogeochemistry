@@ -4,7 +4,7 @@ pf   = np.loadtxt('table1.txt', skiprows=1)
 phqc = np.loadtxt('../../../../phreeqc/speciation/dong2010/ex1.txt', skiprows=2)
 ph   = phqc[:, 0]
 
-semilogy(pf[:, 0], pf[:, 2], 'bo', pf[:, 0], pf[:, 3], 'r+', pf[:, 0], pf[:, 5], 'gx', pf[:, 0], pf[:, 6], 'ms', pf[:, 0], pf[:, 7], 'cd')
+semilogy(pf[:, 0], pf[:, 2], 'bo', pf[:, 0], pf[:, 3], 'rs', pf[:, 0], pf[:, 5], 'gd', pf[:, 0], pf[:, 6], 'm^', pf[:, 0], pf[:, 7], 'c<', markerfacecolor = 'white')
 semilogy(ph, phqc[:, 11], 'b-', ph, phqc[:, 12], 'r-', ph, phqc[:, 7], 'g-', ph, phqc[:, 3], 'm-', ph, phqc[:, 8], 'c-')
 plt.xlim([1, 11])
 plt.ylim([1.0e-15, 1.0e-9])
@@ -16,10 +16,9 @@ lgd.draw_frame(False)
 txt = lgd.get_texts()
 plt.setp(txt, fontsize='medium')
 
-plt.subplots_adjust(left=0.12, right=0.95, top=0.95, bottom=0.12, wspace=0.05, hspace=0.05)
+plt.subplots_adjust(left=0.13, right=0.95, top=0.95, bottom=0.12, wspace=0.05, hspace=0.05)
 
 fig = matplotlib.pyplot.gcf()
-fig.set_size_inches(8, 6)
-savefig('comp.png')
+fig.set_size_inches(6, 4.5)
 savefig('comp.pdf')
 #show()
